@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "actividades_semana",
+  "info": {
+    "singularName": "actividadsemana",
+    "pluralName": "actividadessemana",
+    "displayName": "Actividades de la Semana"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "actividades": {
+      "type": "component",
+      "repeatable": true,
+      "component": "actividad.actividad"
+    }
+  }
+}

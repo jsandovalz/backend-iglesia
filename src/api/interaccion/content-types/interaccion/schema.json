@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "interaccions",
+  "info": {
+    "singularName": "interaccion",
+    "pluralName": "interaccions",
+    "displayName": "Interaccion"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Tipo": {
+      "type": "enumeration",
+      "enum": [
+        "Peticion",
+        "Testimonio"
+      ]
+    },
+    "Nombre": {
+      "type": "string"
+    },
+    "Descripcion": {
+      "type": "blocks"
+    },
+    "Estado": {
+      "type": "enumeration",
+      "default": "Pendiente",
+      "enum": [
+        "Pendiente",
+        "Aprobado",
+        "Rechazado"
+      ]
+    }
+  }
+}
