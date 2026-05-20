@@ -1,7 +1,7 @@
 module.exports = ({ env }) => {
-  const dbUrl = env('DATABASE_URL', '');
+  const client = env('DATABASE_CLIENT', 'sqlite');
 
-  if (!dbUrl) {
+  if (client === 'sqlite') {
     return {
       connection: {
         client: 'sqlite',
@@ -11,20 +11,11 @@ module.exports = ({ env }) => {
     };
   }
 
-  const { URL } = require('url');
-  const url = new URL(dbUrl);
-
   return {
     connection: {
       client: 'postgres',
-      connection: {
-        host: url.hostname,
-        port: Number(url.port),
-        database: url.pathname.replace('/', ''),
-        user: url.username,
-        password: url.password,
-        ssl: { rejectUnauthorized: false },
-      },
+      connection: env('DATABASE_URL', ''),
+      ssl: { rejectUnauthorized: false },
       pool: { min: 2, max: 10 },
     },
   };
