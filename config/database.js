@@ -1,5 +1,4 @@
 const { URL } = require('url');
-
 module.exports = ({ env }) => {
   const url = new URL(env('DATABASE_URL'));
 
