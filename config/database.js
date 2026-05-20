@@ -1,6 +1,6 @@
-import type { Core } from '@strapi/strapi';
+const { URL } = require('url');
 
-const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Database => {
+module.exports = ({ env }) => {
   const url = new URL(env('DATABASE_URL'));
 
   return {
@@ -21,5 +21,3 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Database 
     },
   };
 };
-
-export default config;
