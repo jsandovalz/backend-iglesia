@@ -1,44 +1,18 @@
 {
-  "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "lib": ["ES2020"],
-    "target": "ES2019",
-    "strict": false,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "incremental": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "noEmitOnError": true,
-    "noImplicitThis": true,
-    "outDir": "dist",
-    "rootDir": "."
-  },
+  "extends": "@strapi/typescript-utils/tsconfigs/server",
   "include": [
-    // Include root files
-    "./",
-    // Include all ts files
-    "./**/*.ts",
-    // Include all js files
-    "./**/*.js",
-    // Force the JSON files in the src folder to be included
-    "src/**/*.json"
+    "./src",
+    "./config"
   ],
-
   "exclude": [
-    "node_modules/",
-    "build/",
-    "dist/",
-    ".cache/",
-    ".tmp/",
-    ".strapi/",
-
-    // Do not include admin files in the server compilation
-    "src/admin/",
-    // Do not include test files
+    "node_modules",
+    "build",
+    "dist",
+    ".cache",
+    ".tmp",
+    ".strapi",
+    "src/admin",
     "**/*.test.*",
-    // Do not include plugins in the server compilation
-    "src/plugins/**"
+    "src/plugins"
   ]
 }
