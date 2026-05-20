@@ -1,6 +1,8 @@
 const { URL } = require('url');
+
 module.exports = ({ env }) => {
-const url = new URL(env('DATABASE_URL'));
+  const dbUrl = env('DATABASE_URL');
+  const url = new URL(dbUrl);
 
   return {
     connection: {
@@ -11,7 +13,9 @@ const url = new URL(env('DATABASE_URL'));
         database: url.pathname.replace('/', ''),
         user: url.username,
         password: url.password,
-        ssl: false,
+        ssl: {
+          rejectUnauthorized: false,
+        },
       },
       pool: {
         min: 2,

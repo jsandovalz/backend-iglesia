@@ -1,9 +1,6 @@
 {
   "extends": "@strapi/typescript-utils/tsconfigs/server",
-  "include": [
-    "./src",
-    "./config"
-  ],
+  "include": ["./src"],
   "exclude": [
     "node_modules",
     "build",
