@@ -13,6 +13,6 @@ ENV NODE_ENV=production
 ENV PORT=1337
 EXPOSE 1337
 
-RUN npm run build && ls -la /app/dist
+RUN npm run build
 
 CMD ["node", "node_modules/@strapi/strapi/bin/strapi.js", "start"]
