@@ -1,7 +1,18 @@
-const { URL } = require('url');
-
 module.exports = ({ env }) => {
-  const dbUrl = env('DATABASE_URL');
+  const dbUrl = env('DATABASE_URL', '');
+
+  if (!dbUrl) {
+    // Durante el build no hay DATABASE_URL, se retorna config mínima
+    return {
+      connection: {
+        client: 'sqlite',
+        connection: { filename: '.tmp/build.db' },
+        useNullAsDefault: true,
+      },
+    };
+  }
+
+  const { URL } = require('url');
   const url = new URL(dbUrl);
 
   return {
