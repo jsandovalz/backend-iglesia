@@ -15,8 +15,8 @@ ENV HOST=0.0.0.0
 
 EXPOSE 1337
 
-RUN npm run build
+RUN node_modules/.bin/tsc -p tsconfig.json --outDir dist --skipLibCheck 2>/dev/null || true
 
-RUN ls -la /app && ls -la /app/.strapi 2>/dev/null || echo "no .strapi dir" && ls -la /app/dist 2>/dev/null || echo "no dist dir"
+RUN npm run build
 
 CMD ["npm", "run", "start"]
