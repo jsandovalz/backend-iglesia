@@ -2,14 +2,8 @@
   "extends": "@strapi/typescript-utils/tsconfigs/server",
   "include": ["./src"],
   "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    ".cache",
-    ".tmp",
-    ".strapi",
-    "src/admin",
-    "**/*.test.*",
-    "src/plugins"
+    "node_modules", "build", "dist", ".cache",
+    ".tmp", ".strapi", "src/admin",
+    "**/*.test.*", "src/plugins"
   ]
 }

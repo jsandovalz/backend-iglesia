@@ -2,7 +2,6 @@ module.exports = ({ env }) => {
   const dbUrl = env('DATABASE_URL', '');
 
   if (!dbUrl) {
-    // Durante el build no hay DATABASE_URL, se retorna config mínima
     return {
       connection: {
         client: 'sqlite',
@@ -24,14 +23,9 @@ module.exports = ({ env }) => {
         database: url.pathname.replace('/', ''),
         user: url.username,
         password: url.password,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        ssl: { rejectUnauthorized: false },
       },
-      pool: {
-        min: 2,
-        max: 10,
-      },
+      pool: { min: 2, max: 10 },
     },
   };
 };
