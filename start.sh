@@ -1,12 +1,12 @@
 #!/bin/sh
-echo "=== ENV CHECK ==="
-echo "DATABASE_CLIENT=$DATABASE_CLIENT"
-echo "DATABASE_URL length=${#DATABASE_URL}"
-echo "NODE_ENV=$NODE_ENV"
-echo "=== CONFIG FILES ==="
-cat /app/config/database.js 2>/dev/null || echo "no config/database.js"
-cat /app/config/env/production/database.js 2>/dev/null || echo "no config/env/production/database.js"
-echo "=== DIST CONFIG ==="
-find /app/dist -name "database*" 2>/dev/null || echo "no dist database files"
-echo "=================="
+echo "=== COPYING CONFIG TO DIST ==="
+mkdir -p /app/dist/config/env/production
+cp /app/config/database.js /app/dist/config/database.js
+cp /app/config/server.js /app/dist/config/server.js
+cp /app/config/middlewares.js /app/dist/config/middlewares.js
+cp /app/config/plugins.js /app/dist/config/plugins.js
+cp /app/config/admin.js /app/dist/config/admin.js
+cp /app/config/api.js /app/dist/config/api.js 2>/dev/null || true
+cp /app/config/env/production/database.js /app/dist/config/env/production/database.js 2>/dev/null || true
+echo "=== STARTING STRAPI ==="
 npm run start
