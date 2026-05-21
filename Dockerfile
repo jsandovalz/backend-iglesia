@@ -15,8 +15,6 @@ ENV HOST=0.0.0.0
 
 EXPOSE 1337
 
-RUN node_modules/.bin/tsc -p tsconfig.json --outDir dist --skipLibCheck 2>/dev/null || true
-
 RUN npm run build
 
 CMD ["npm", "run", "start"]
