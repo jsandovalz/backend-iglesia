@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:20-alpine3.20
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN npm install --legacy-peer-deps --no-package-lock
 
 COPY . .
 
-ARG CACHEBUST=3
+ARG CACHEBUST=4
 
 RUN rm -rf /app/dist /app/.strapi
 
