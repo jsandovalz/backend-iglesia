@@ -22,7 +22,11 @@ EXPOSE 1337
 # Compilar TypeScript
 RUN ./node_modules/.bin/tsc --project tsconfig.json --skipLibCheck || true
 
-# Verificar que dist/api existe
+# Sobreescribir config de DB compilada con la correcta
+RUN mkdir -p /app/dist/config/env/production && \
+    cp /app/config/database.js /app/dist/config/database.js && \
+    cp /app/config/env/production/database.js /app/dist/config/env/production/database.js
+
 RUN ls /app/dist/api || echo "WARNING: dist/api not found"
 
 RUN npm run build
