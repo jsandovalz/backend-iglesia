@@ -1,6 +1,17 @@
 module.exports = ({ env }) => {
-  const { URL } = require('url');
   const dbUrl = env('DATABASE_URL', '');
+
+  if (!dbUrl) {
+    return {
+      connection: {
+        client: 'sqlite',
+        connection: { filename: '.tmp/build.db' },
+        useNullAsDefault: true,
+      },
+    };
+  }
+
+  const { URL } = require('url');
   const url = new URL(dbUrl);
 
   return {
