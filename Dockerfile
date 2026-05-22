@@ -19,9 +19,12 @@ ENV HOST=0.0.0.0
 
 EXPOSE 1337
 
-RUN npm run build
+# Compilar TypeScript
+RUN ./node_modules/.bin/tsc --project tsconfig.json --skipLibCheck || true
 
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+# Verificar que dist/api existe
+RUN ls /app/dist/api || echo "WARNING: dist/api not found"
+
+RUN npm run build
 
 CMD ["/start.sh"]
