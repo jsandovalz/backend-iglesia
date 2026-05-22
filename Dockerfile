@@ -27,4 +27,4 @@ RUN ls /app/dist/api || echo "WARNING: dist/api not found"
 
 RUN npm run build
 
-CMD ["/start.sh"]
+CMD ["npm", "run", "start"]
