@@ -8,7 +8,7 @@ RUN apk add --no-cache python3 make g++ libc6-compat
 
 COPY package.json ./
 RUN npm install --legacy-peer-deps --no-package-lock
-RUN npm install @strapi/design-system@2.1.9 --legacy-peer-deps --no-package-lock
+RUN npm install @strapi/design-system@2.1.9 --force --no-package-lock
 
 COPY . .
 

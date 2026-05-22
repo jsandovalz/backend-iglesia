@@ -42,8 +42,5 @@
   "strapi": {
     "uuid": "adf3ca8d-bf7a-4299-8113-166dc6d10d18",
     "installId": "46d2e2a1033a97a6879af0937da45b2a8a4308593756eb892e52433207ef35b8"
-  },
-  "overrides": {
-    "@strapi/design-system": "2.0.0-rc.9"
   }
 }
