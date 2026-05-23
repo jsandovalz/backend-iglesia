@@ -14,8 +14,17 @@ RUN rm -rf /app/dist /app/.strapi
 # Copiar src completo a dist
 RUN mkdir -p /app/dist && cp -r /app/src/* /app/dist/ 2>/dev/null || true
 
-# Copiar archivos .ts como .js para que Strapi los pueda  leer
-RUN find /app/dist -name "*.ts" | while read f; do cp "$f" "${f%.ts}.js"; done
+# Copiar solo los schema.json que es lo que Strapi necesita para los content types
+RUN find /app/src/api -name "schema.json" | while read f; do \
+    dir=$(dirname "$f" | sed 's|/app/src/|/app/dist/|'); \
+    mkdir -p "$dir"; \
+    cp "$f" "$dir/"; \
+    done
+
+# Crear controllers/routes/services vacíos como JS válido
+RUN find /app/dist/api -name "*.ts" | while read f; do \
+    echo "module.exports = {};" > "${f%.ts}.js"; \
+    done
 
 # Copiar configs
 RUN mkdir -p /app/dist/config/env/production && \
@@ -24,7 +33,7 @@ RUN mkdir -p /app/dist/config/env/production && \
     cp /app/config/admin.js /app/dist/config/admin.js && \
     cp /app/config/server.js /app/dist/config/server.js
 
-    
+
 RUN ls /app/dist/api || echo "WARNING: dist/api not found"
 
 ENV NODE_ENV=production
