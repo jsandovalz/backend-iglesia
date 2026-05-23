@@ -26,7 +26,9 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "strapi-provider-email-nodemailer": "^3.6.11",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",
