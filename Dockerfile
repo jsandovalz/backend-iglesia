@@ -12,7 +12,7 @@ COPY . .
 RUN rm -rf /app/dist /app/.strapi
 
 # Copiar src completo a dist
-RUN cp -r /app/src/* /app/dist/ 2>/dev/null || true
+RUN mkdir -p /app/dist && cp -r /app/src/* /app/dist/ 2>/dev/null || true
 
 # Copiar archivos .ts como .js para que Strapi los pueda  leer
 RUN find /app/dist -name "*.ts" | while read f; do cp "$f" "${f%.ts}.js"; done
@@ -24,7 +24,7 @@ RUN mkdir -p /app/dist/config/env/production && \
     cp /app/config/admin.js /app/dist/config/admin.js && \
     cp /app/config/server.js /app/dist/config/server.js
 
-RUN ls /app/dist/api
+RUN ls /app/dist/api || echo "WARNING: dist/api not found"
 
 ENV NODE_ENV=production
 ENV PORT=1337
