@@ -24,6 +24,7 @@ RUN mkdir -p /app/dist/config/env/production && \
     cp /app/config/admin.js /app/dist/config/admin.js && \
     cp /app/config/server.js /app/dist/config/server.js
 
+    
 RUN ls /app/dist/api || echo "WARNING: dist/api not found"
 
 ENV NODE_ENV=production
