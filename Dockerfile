@@ -17,6 +17,12 @@ EXPOSE 1337
 
 RUN npm run build
 
+RUN find /app/src/api -name "schema.json" | while read f; do \
+    target=$(echo "$f" | sed 's|/app/src/|/app/dist/|'); \
+    mkdir -p "$(dirname $target)"; \
+    cp "$f" "$target"; \
+    done
+
 RUN find /app/dist -name "schema.json" 2>/dev/null || echo "NO SCHEMAS IN DIST" && \
     find /app/.strapi -name "schema.json" 2>/dev/null || echo "NO SCHEMAS IN .STRAPI" && \
     find /app/src -name "schema.json" 2>/dev/null || echo "NO SCHEMAS IN SRC"
