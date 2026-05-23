@@ -1,7 +1,5 @@
 FROM node:20-alpine3.20
 
-ADD https://worldtimeapi.org/api/ip /tmp/bustcache
-
 WORKDIR /app
 
 RUN apk add --no-cache python3 make g++ libc6-compat
