@@ -17,6 +17,10 @@ EXPOSE 1337
 
 RUN npm run build
 
+RUN find /app/dist -name "schema.json" 2>/dev/null || echo "NO SCHEMAS IN DIST" && \
+    find /app/.strapi -name "schema.json" 2>/dev/null || echo "NO SCHEMAS IN .STRAPI" && \
+    find /app/src -name "schema.json" 2>/dev/null || echo "NO SCHEMAS IN SRC"
+
 RUN find /app/dist -name "schema.json" | head -20 || echo "No schema.json found"
 
 # Sobreescribir configs DESPUÉS del build
