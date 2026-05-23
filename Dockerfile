@@ -17,6 +17,8 @@ EXPOSE 1337
 
 RUN npm run build
 
+RUN find /app/dist -name "schema.json" | head -20 || echo "No schema.json found"
+
 # Sobreescribir configs DESPUÉS del build
 RUN mkdir -p /app/dist/config/env/production && \
     cp /app/config/database.js /app/dist/config/database.js && \
