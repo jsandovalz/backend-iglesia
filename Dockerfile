@@ -14,7 +14,7 @@ RUN rm -rf /app/dist /app/.strapi
 # Copiar src completo a dist
 RUN cp -r /app/src/* /app/dist/ 2>/dev/null || true
 
-# Copiar archivos .ts como .js para que Strapi los pueda leer
+# Copiar archivos .ts como .js para que Strapi los pueda  leer
 RUN find /app/dist -name "*.ts" | while read f; do cp "$f" "${f%.ts}.js"; done
 
 # Copiar configs
