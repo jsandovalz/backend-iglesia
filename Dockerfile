@@ -15,8 +15,24 @@ ENV HOST=0.0.0.0
 
 EXPOSE 1337
 
+# Build solo el admin panel (no toca dist/api)
 RUN npm run build
 
+# Restaurar dist/api desde src (el build lo sobreescribe)
+RUN find /app/src/api -name "*.js" | while read f; do \
+    target=$(echo "$f" | sed 's|/app/src/|/app/dist/|'); \
+    mkdir -p "$(dirname $target)"; \
+    cp "$f" "$target"; \
+    done
+
+# Copiar schemas
+RUN find /app/src/api -name "schema.json" | while read f; do \
+    target=$(echo "$f" | sed 's|/app/src/|/app/dist/|'); \
+    mkdir -p "$(dirname $target)"; \
+    cp "$f" "$target"; \
+    done
+
+# Copiar configs
 RUN mkdir -p /app/dist/config/env/production && \
     cp /app/config/database.js /app/dist/config/database.js && \
     cp /app/config/env/production/database.js /app/dist/config/env/production/database.js && \
