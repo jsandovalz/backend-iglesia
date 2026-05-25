@@ -30,4 +30,10 @@ RUN mkdir -p /app/dist/config/env/production && \
     cp /app/config/admin.js /app/dist/config/admin.js && \
     cp /app/config/server.js /app/dist/config/server.js
 
+RUN cp -r /tmp/api-backup /app/dist/api
+
+# Debug: verificar contenido
+RUN find /app/dist/api -type f -name "*.js" | head -20 && \
+    cat /app/dist/api/event/controllers/event.js
+
 CMD ["npm", "run", "start"]
