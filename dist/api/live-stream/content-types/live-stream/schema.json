@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "live_streams",
+  "info": {
+    "singularName": "live-stream",
+    "pluralName": "live-streams",
+    "displayName": "LiveStream"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "descripcion": {
+      "type": "blocks"
+    },
+    "youtube_id": {
+      "type": "string",
+      "required": true
+    },
+    "fecha_inicio": {
+      "type": "datetime"
+    },
+    "fecha_fin": {
+      "type": "datetime"
+    },
+    "activo": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

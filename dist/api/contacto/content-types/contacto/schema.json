@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contactos",
+  "info": {
+    "singularName": "contacto",
+    "pluralName": "contactos",
+    "displayName": "Contacto"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "mensaje": {
+      "type": "blocks",
+      "required": true
+    },
+    "fecha": {
+      "type": "date"
+    },
+    "estado": {
+      "type": "enumeration",
+      "default": "Pendiente",
+      "enum": [
+        "Pendiente",
+        "Respondido",
+        "Archivado"
+      ]
+    }
+  }
+}
